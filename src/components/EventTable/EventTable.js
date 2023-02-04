@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { EventContext } from "../../context/EventContext";
-import EventRow from "../EventRow/eventRow";
+import EventRow from "../EventRow/EventRow";
 import NewEvent from "../NewEvent/NewEvent";
 import "./eventTable.css";
 

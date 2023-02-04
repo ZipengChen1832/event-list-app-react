@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddEventBtn from "./components/AddEventBtn/AddEventBtn";
-import EventTable from "./components/EventTable/eventTable";
+import EventTable from "./components/EventTable/EventTable";
 import { EventContext } from "./context/EventContext";
 import { getEvents } from "./api/eventAPIs";
 
