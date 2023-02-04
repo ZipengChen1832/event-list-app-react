@@ -9,6 +9,9 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'build'),
   },
+  resolve: {
+    extensions: [".js"]
+  },
   module: {
     rules: [
       {
