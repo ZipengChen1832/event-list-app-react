@@ -1,0 +1,14 @@
+.event-table {
+  /* border: 5px solid var(--Tan); */
+  border-spacing: 0 2rem;
+  border-radius: 1rem;
+
+  /* padding: 2rem; */
+  width: 100%;
+  text-align: center;
+}
+
+.event-table th {
+  font-size: 3rem;
+  width: 25%;
+}

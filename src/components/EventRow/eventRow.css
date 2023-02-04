@@ -1,0 +1,41 @@
+.event {
+  background-color: var(--Tan);
+  height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.event input {
+  border: none;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.event__btn-delete,
+.event__btn-edit,
+.event__btn-save,
+.event__btn-cancel {
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  width: 3rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
+.event__btn-delete,
+.event__btn-cancel {
+  background-color: var(--Vermillion-red);
+}
+
+.event__btn-edit,
+.event__btn-save {
+  background-color: var(--blue);
+}
+
+.event__btn-delete:hover,
+.event__btn-cancel:hover,
+.event__btn-edit:hover,
+.event__btn-save:hover {
+  cursor: pointer;
+}

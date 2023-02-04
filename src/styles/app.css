@@ -1,0 +1,17 @@
+.event-list-app {
+  margin-top: 1rem;
+  font-size: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 80%;
+  height: fit-content;
+  padding: 3rem;
+  border: 5px solid var(--Tan);
+  border-radius: 2rem;
+}
+
+.event-actions {
+  text-align: center;
+  margin-bottom: 1rem;
+}

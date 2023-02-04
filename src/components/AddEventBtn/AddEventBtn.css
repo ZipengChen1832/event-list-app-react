@@ -1,0 +1,12 @@
+.btn-add-event {
+  background-color: var(--blue);
+  border: none;
+  border-radius: 1rem;
+  color: var(--Traffic-white);
+  padding: 1.5rem;
+  font-size: 2rem;
+}
+
+.btn-add-event:hover {
+  cursor: pointer;
+}
