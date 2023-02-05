@@ -1,4 +1,4 @@
-const URL = "http://localhost:3000/events";
+const URL = "https://event-list-json-server.onrender.com/events";
 
 export const getEvents = () => {
   return fetch(URL).then((res) => res.json());
