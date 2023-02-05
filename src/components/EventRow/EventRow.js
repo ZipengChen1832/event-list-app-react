@@ -7,29 +7,24 @@ import "./eventRow.css";
 export default function EventRow({ event }) {
   const [isEditingMode, setIsEditingMode] = useState(false);
   const { events, setEvents } = useContext(EventContext);
-  const [eventInputs,handleChange] = useEventInputs(event);
-
-  useEffect(()=>{
-    console.log(getComputedStyle((document.querySelector(".event__actions"))).height);
-    console.log(getComputedStyle((document.querySelector(".event__btn-delete"))).height);
-  },[])
+  const [eventInputs, handleChange] = useEventInputs(event);
 
   function handleEdit() {
     setIsEditingMode(true);
   }
 
   function handleSave() {
-    setIsEditingMode(false);
-    setEvents((prev) => {
-      return prev.map((pEvent) => {
-        if (pEvent.id === event.id) {
-          return {
-            ...pEvent,
-            ...eventInputs
-          };
-        }
-        return pEvent;
+    const newEvent = { id: event.id, ...eventInputs };
+    eventAPIs.editEvent(event.id, newEvent).then((editedEvent) => {
+      setEvents((prev) => {
+        return prev.map((pEvent) => {
+          if (pEvent.id === event.id) {
+            return editedEvent;
+          }
+          return pEvent;
+        });
       });
+      setIsEditingMode(false);
     });
   }
 
@@ -49,13 +44,31 @@ export default function EventRow({ event }) {
   return isEditingMode ? (
     <tr className="event">
       <td>
-        <input name="eventName" className="event__name" type="text" value={eventInputs.eventName} onChange={handleChange}/>
+        <input
+          name="eventName"
+          className="event__name"
+          type="text"
+          value={eventInputs.eventName}
+          onChange={handleChange}
+        />
       </td>
       <td>
-        <input name="startDate" className="event__start-date" type="date" value={eventInputs.startDate} onChange={handleChange}/>
+        <input
+          name="startDate"
+          className="event__start-date"
+          type="date"
+          value={eventInputs.startDate}
+          onChange={handleChange}
+        />
       </td>
       <td>
-        <input name="endDate" className="event__end-date" type="date" value={eventInputs.endDate} onChange={handleChange}/>
+        <input
+          name="endDate"
+          className="event__end-date"
+          type="date"
+          value={eventInputs.endDate}
+          onChange={handleChange}
+        />
       </td>
       <td className="event__actions">
         <button className="event__btn-save" onClick={handleSave}>
