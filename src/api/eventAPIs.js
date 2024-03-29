@@ -38,6 +38,6 @@ const eventAPIs = {
   getEvents,
   postEvent,
   editEvent,
-  deleteEvent
-}
+  deleteEvent,
+};
 export default eventAPIs;

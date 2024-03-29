@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import eventAPIs from "../../api/eventAPIs";
-import { EventContext } from "../../context/EventContext";
+import { useEvent } from "../../context/EventContext";
 import useEventInputs from "../../hooks/useEventInputs";
 import "./eventRow.css";
 
 export default function EventRow({ event }) {
   const [isEditingMode, setIsEditingMode] = useState(false);
-  const { events, setEvents } = useContext(EventContext);
+  const { setEvents, updateEvent } = useEvent();
   const [eventInputs, handleChange] = useEventInputs(event);
 
   function handleEdit() {
@@ -16,14 +16,7 @@ export default function EventRow({ event }) {
   function handleSave() {
     const newEvent = { id: event.id, ...eventInputs };
     eventAPIs.editEvent(event.id, newEvent).then((editedEvent) => {
-      setEvents((prev) => {
-        return prev.map((pEvent) => {
-          if (pEvent.id === event.id) {
-            return editedEvent;
-          }
-          return pEvent;
-        });
-      });
+      updateEvent(event.id, editedEvent);
       setIsEditingMode(false);
     });
   }

@@ -1,31 +1,17 @@
 import React, { useEffect, useState } from "react";
 import AddEventBtn from "./components/AddEventBtn/AddEventBtn";
 import EventTable from "./components/EventTable/EventTable";
-import { EventContext } from "./context/EventContext";
-import { getEvents } from "./api/eventAPIs";
+import EventProvider, { EventContext } from "./context/EventContext";
 
 export default function App() {
-  const [events, setEvents] = useState([]);
-  const [isAddingMode, setIsAddingMode] = useState(false);
-
-  useEffect(() => {
-    getEvents().then(setEvents);
-  }, []);
-
-  function handleAdd() {
-    setIsAddingMode(true);
-  }
-
   return (
-    <EventContext.Provider value={{events,setEvents,setIsAddingMode,isAddingMode}}>
+    <EventProvider>
       <div className="event-list-app">
         <div className="event-actions">
-          <AddEventBtn handleAdd={handleAdd} text="Add New Event" />
+          <AddEventBtn text="Add New Event" />
         </div>
         <EventTable />
       </div>
-    </EventContext.Provider>
+    </EventProvider>
   );
 }
-
-
